@@ -1,0 +1,31 @@
+name: Check compatibility with Symfony
+
+on: [ 'push' ]
+
+jobs:
+    setup-bundle:
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: shivammathur/setup-php@v2
+                with:
+                    php-version: '8.1'
+            -   name: Install Symfony CLI
+                run: |
+                    curl -sS https://get.symfony.com/cli/installer | bash
+                    mv /home/runner/.symfony5/bin/symfony /usr/local/bin/symfony
+
+            -   name: Create blank Symfony project
+                run: symfony new ./ --no-install
+                
+            -   name: Install bundle
+                uses: actions/checkout@v3
+                with:
+                    path: libs/ebitkov/bootstrap-twig-components
+            -   run: composer config repositories.bundle '{"type":"path","url":"./libs/ebitkov/bootstrap-twig-components"}'
+            -   run: composer require ebitkov/bootstrap-twig-components --no-install
+                
+            -   name: Install Dependencies
+                run: composer install update --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+            -   name: Clear cache to check errors
+                run: symfony console cache:clear
