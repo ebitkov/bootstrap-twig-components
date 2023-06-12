@@ -11,7 +11,7 @@ jobs:
                     php-version: '8.1'
 
             -   name: Create blank Symfony project
-                run: composer create-project symfony/skeleton:6.2.* ./
+                run: composer create-project symfony/skeleton:6.3.* ./
                 
             -   name: Install bundle
                 uses: actions/checkout@v3
