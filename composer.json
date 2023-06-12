@@ -1,0 +1,27 @@
+{
+    "name": "ebitkov/bootstrap-twig-components",
+    "description": "Symfony UX Twig components of the Boostrap framework",
+    "type": "symfony-bundle",
+    "authors": [
+        {
+            "name": "Emanuel Bitkov",
+            "email": "github@bitkov.de"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=8.1"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "ebitkov\\BootstrapTwigComponents\\": "src/"
+        }
+    },
+    "autoload-dev": {
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
