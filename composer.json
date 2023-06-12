@@ -13,7 +13,6 @@
         "php": ">=8.1",
         "symfony/framework-bundle": "^6.2||^6.3",
         "symfony/options-resolver": "^6.3",
-        "symfony/twig-bundle": "^6.3",
         "symfony/ux-twig-component": "^2.9"
     },
     "autoload": {
@@ -22,6 +21,9 @@
         }
     },
     "autoload-dev": {
+        "psr-4": {
+            "ebitkov\\BootstrapTwigComponents\\Tests\\": "tests/"
+        }
     },
     "config": {
         "sort-packages": true,
@@ -30,6 +32,7 @@
         }
     },
     "require-dev": {
-        "phpstan/phpstan": "^1.10"
+        "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": "^10.2"
     }
 }
