@@ -1,0 +1,20 @@
+name: Static Analysis with PHPStan
+
+on:
+    push:
+        paths:
+            - .github/workflow/static-analysis.yaml
+            - composer.*
+            - src/**
+            - test/**
+
+jobs:
+    phpstan:
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: shivammathur/setup-php@v2
+                with:
+                    php-version: '8.1'
+            -   uses: actions/checkout@v3
+            -   run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+            -   run: vendor/bin/phpstan

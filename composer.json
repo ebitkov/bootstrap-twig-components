@@ -21,6 +21,12 @@
     "autoload-dev": {
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "symfony/flex": false
+        }
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.10"
     }
 }
