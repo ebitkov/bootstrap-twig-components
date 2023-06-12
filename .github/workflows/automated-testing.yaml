@@ -3,7 +3,7 @@ name: Automated Testing with PHPUnit
 on: [ 'push' ]
 
 jobs:
-    setup-bundle:
+    test-bundle:
         runs-on: ubuntu-latest
         steps:
             -   uses: shivammathur/setup-php@v2
@@ -18,10 +18,10 @@ jobs:
                 with:
                     path: libs/ebitkov/bootstrap-twig-components
             -   run: composer config repositories.bundle '{"type":"path","url":"./libs/ebitkov/bootstrap-twig-components"}'
-            -   run: composer require ebitkov/bootstrap-twig-components:@dev --no-install
-                
-            -   name: Install Dependencies
-                run: composer install
+            -   run: |
+                    composer require \
+                        ebitkov/bootstrap-twig-components:@dev \
+                        test
                 
             -   name: Run Tests
                 run: php bin/phpunit libs/ebitkov/bootstrap-twig-components/tests
