@@ -12,7 +12,10 @@ class Alert
 
     public ?string $type = null;
 
-
+    /**
+     * @param array<string, string> $data
+     * @return array<string, string>
+     */
     #[PostMount]
     public function configureAttributes(array $data): array
     {
