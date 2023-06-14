@@ -14,8 +14,7 @@
         "symfony/framework-bundle": "^6.2||^6.3",
         "symfony/options-resolver": "^6.3",
         "symfony/twig-bundle": "^6.3",
-        "symfony/ux-twig-component": "^2.9",
-        "twig/twig": "^3.6"
+        "symfony/ux-twig-component": "^2.9"
     },
     "autoload": {
         "psr-4": {

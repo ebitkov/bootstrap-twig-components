@@ -7,16 +7,17 @@ use Twig\Environment;
 
 class AlertTest extends KernelTestCase
 {
-    public function testSimpleAlert()
+    public function testBasicAlertMarkup()
     {
-        $this->bootKernel();
-        $container = $this->getContainer();
+        self::bootKernel();
+        $container = self::getContainer();
 
         /** @var Environment $twig */
-        $twig = $container->get('twig');
+        $twig = $container->get(Environment::class);
 
-        $template = $twig->createTemplate('<twig:bootstrap:alert/>');
+        $template = $twig->createTemplate('<twig:bootstrap:alert type="primary" message="hello world"/>');
+        $result = $template->render();
 
-        self::assertSame('<div class="alert"></div>', $template->render());
+        self::assertSame('<div class="alert alert-primary" role="alert">hello world</div>', $result);
     }
 }
