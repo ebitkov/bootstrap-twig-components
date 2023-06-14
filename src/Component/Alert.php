@@ -16,10 +16,12 @@ class Alert
     #[PostMount]
     public function configureAttributes(array $data): array
     {
-        return [
+        $data = [
             ...$data,
             'class' => 'alert' . ($this->type ? ' alert-' . $this->type : '') . (!empty($data['class']) ? ' ' . $data['class'] : ''),
             'role' => 'alert'
         ];
+        ksort($data);
+        return $data;
     }
 }

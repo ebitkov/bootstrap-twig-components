@@ -9,15 +9,34 @@ class AlertTest extends KernelTestCase
 {
     public function testBasicAlertMarkup()
     {
-        self::bootKernel();
-        $container = self::getContainer();
-
-        /** @var Environment $twig */
-        $twig = $container->get(Environment::class);
+        $twig = $this->getTwig();
 
         $template = $twig->createTemplate('<twig:bootstrap:alert type="primary" message="hello world"/>');
         $result = $template->render();
 
         self::assertSame('<div class="alert alert-primary" role="alert">hello world</div>', $result);
+    }
+
+    public function testWithCustomContentAndAttributes()
+    {
+        $twig = $this->getTwig();
+
+        $template = $twig->createTemplate('<twig:bootstrap:alert type="success" data-controller="alert"><h4 class="alert-heading">Custom Title!</h4><p>This is some content.</p></twig:bootstrap:alert>');
+
+        self::assertSame(
+            '<div class="alert alert-success" data-controller="alert" role="alert"><h4 class="alert-heading">Custom Title!</h4><p>This is some content.</p></div>',
+            $template->render()
+        );
+    }
+
+
+    private function getTwig(): Environment
+    {
+
+        self::bootKernel();
+        $container = self::getContainer();
+
+        /** @var Environment $twig */
+        return $container->get(Environment::class);
     }
 }
