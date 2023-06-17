@@ -11,7 +11,7 @@ class AlertTest extends KernelTestCase
     {
         $twig = $this->getTwig();
 
-        $template = $twig->createTemplate('<twig:bootstrap:alert type="primary" message="hello world"/>');
+        $template = $twig->createTemplate('<twig:bs:alert type="primary" message="hello world"/>');
         $result = $template->render();
 
         self::assertSame('<div class="alert alert-primary" role="alert">hello world</div>', $result);
@@ -21,7 +21,7 @@ class AlertTest extends KernelTestCase
     {
         $twig = $this->getTwig();
 
-        $template = $twig->createTemplate('<twig:bootstrap:alert type="success" data-controller="alert"><h4 class="alert-heading">Custom Title!</h4><p>This is some content.</p></twig:bootstrap:alert>');
+        $template = $twig->createTemplate('<twig:bs:alert type="success" data-controller="alert"><h4 class="alert-heading">Custom Title!</h4><p>This is some content.</p></twig:bs:alert>');
 
         self::assertSame(
             '<div class="alert alert-success" data-controller="alert" role="alert"><h4 class="alert-heading">Custom Title!</h4><p>This is some content.</p></div>',

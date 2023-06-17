@@ -5,7 +5,7 @@ namespace ebitkov\BootstrapTwigComponents\Component;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
-#[AsTwigComponent('bootstrap:alert', template: '@ebitkovBootstrapTwigComponents/components/alert.html.twig')]
+#[AsTwigComponent('bs:alert', template: '@ebitkovBootstrapTwigComponents/components/alert.html.twig')]
 class Alert
 {
     public ?string $message = null;
