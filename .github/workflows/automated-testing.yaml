@@ -17,7 +17,8 @@ jobs:
                 uses: actions/checkout@v3
                 with:
                     path: libs/ebitkov/bootstrap-twig-components
-            -   run: composer config repositories.bundle '{"type":"path","url":"./libs/ebitkov/bootstrap-twig-components"}'
+            -   run: php libs/ebitkov/bootstrap-twig-components/.github/configure-composer.php
+            -   run: cat composer.json
             -   run: |
                     composer require \
                         ebitkov/bootstrap-twig-components:@dev \
