@@ -1,0 +1,15 @@
+{% apply spaceless %}
+    <div{{ attributes }}>
+        {% block img_top %}
+            {% if topImage is not empty %}
+                <twig:bs:card:image
+                    src="{{ topImage.src }}"
+                    alt="{{ topImage.alt }}"
+                    title="{{ topImage.title }}"/>
+            {% endif %}
+        {% endblock %}
+        {% block body %}
+            <div class="card-body">{% block content %}{% endblock %}</div>
+        {% endblock %}
+    </div>
+{% endapply %}

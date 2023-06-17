@@ -2,10 +2,9 @@
 
 namespace ebitkov\BootstrapTwigComponents\Tests\Component;
 
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Twig\Environment;
+use ebitkov\BootstrapTwigComponents\Tests\TwigTestCase;
 
-class AlertTest extends KernelTestCase
+class AlertTest extends TwigTestCase
 {
     public function testBasicAlertMarkup()
     {
@@ -27,16 +26,5 @@ class AlertTest extends KernelTestCase
             '<div class="alert alert-success" data-controller="alert" role="alert"><h4 class="alert-heading">Custom Title!</h4><p>This is some content.</p></div>',
             $template->render()
         );
-    }
-
-
-    private function getTwig(): Environment
-    {
-
-        self::bootKernel();
-        $container = self::getContainer();
-
-        /** @var Environment $twig */
-        return $container->get(Environment::class);
     }
 }
