@@ -10,12 +10,18 @@ class Card
 {
     public ?string $header = null;
 
+    /**
+     * @var array{ src ?: ?string, alt ?: ?string, title ?: ?string }
+     */
     public array $topImage = [];
 
     public ?string $topImageSrc = null;
     public ?string $topImageAlt = null;
     public ?string $topImageTitle = null;
 
+    /**
+     * @var array{ src ?: ?string, alt ?: ?string, title ?: ?string }
+     */
     public array $bottomImage = [];
 
     public ?string $bottomImageSrc = null;

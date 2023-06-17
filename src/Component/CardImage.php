@@ -13,6 +13,10 @@ class CardImage
     public string $position = 'top';
 
 
+    /**
+     * @param array<string, string> $data
+     * @return array<string, string>
+     */
     #[PreMount]
     public function validate(array $data): array
     {
