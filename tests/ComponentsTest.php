@@ -35,7 +35,7 @@ class ComponentsTest extends KernelTestCase
                 throw new Exception(sprintf('%s not found!', $expectedValueFilePath));
             }
 
-            $fixtures[$testName] = [
+            $fixtures[$path . '/' . $testName] = [
                 $path . '/'. $file->getFilename(),
                 $expected
             ];

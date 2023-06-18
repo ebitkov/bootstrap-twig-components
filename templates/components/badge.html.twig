@@ -1,0 +1,10 @@
+{% apply spaceless %}
+    <span{{ attributes }}>
+        {%- block content -%}
+            {%- if label %}{{ label }}{% endif -%}
+            {%- if visuallyHidden -%}
+                <span class="visually-hidden">{{ visuallyHidden }}</span>
+            {%- endif -%}
+        {%- endblock -%}
+    </span>
+{% endapply %}
