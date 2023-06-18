@@ -66,4 +66,54 @@ class CardTest extends TwigTestCase
 
         $this->assertSame($expected, $template->render());
     }
+
+    public function testBottomImage(): void
+    {
+        $twig = $this->getTwig();
+
+        // single value attributes
+        $template = $twig->createTemplate(
+            '<twig:bs:card
+                imagePosition="bottom"
+                imageSrc="some/image.ext"
+                imageAlt="alt text"
+                imageTitle="title text">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card\'s content.</p>
+            </twig:bs:card>');
+
+        $expected =
+            '<div class="card">' .
+                '<div class="card-body">' .
+                    '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card\'s content.</p>' .
+                '</div>' .
+                '<img alt="alt text" class="card-img-bottom" src="some/image.ext" title="title text">' .
+            '</div>';
+
+        $this->assertSame($expected, $template->render());
+    }
+
+    public function testImageOverlay(): void
+    {
+        $twig = $this->getTwig();
+
+        // single value attributes
+        $template = $twig->createTemplate(
+            '<twig:bs:card class="text-bg-dark"
+                imagePosition="overlay"
+                imageSrc="some/image.ext"
+                imageAlt="alt text"
+                imageTitle="title text">
+                <p class="card-text">hello world</p>
+            </twig:bs:card>');
+
+        $expected =
+            '<div class="card text-bg-dark">' .
+                '<img alt="alt text" class="card-img" src="some/image.ext" title="title text">' .
+                '<div class="card-img-overlay">' .
+                    '<p class="card-text">hello world</p>' .
+                '</div>' .
+            '</div>';
+
+        $this->assertSame($expected, $template->render());
+    }
 }

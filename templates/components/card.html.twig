@@ -1,12 +1,19 @@
 {% apply spaceless %}
     <div{{ attributes }}>
         {% block img_top %}
-            {% if image is not empty and image.position == 'top' %}
+            {% if image is not empty and image.position in ['top', 'overlay'] %}
                 {{ component('bs:image', image | filter((v, k) => k != 'position')) }}
             {% endif %}
         {% endblock %}
         {% block body %}
-            <div class="card-body">{% block content %}{% endblock %}</div>
+            <div class="{{ image.position | default('top') == 'overlay' ? 'card-img-overlay' : 'card-body' }}">
+                {%- block content %}{% endblock -%}
+            </div>
+        {% endblock %}
+        {% block img_bottom %}
+            {% if image is not empty and image.position == 'bottom' %}
+                {{ component('bs:image', image | filter((v, k) => k != 'position')) }}
+            {% endif %}
         {% endblock %}
     </div>
 {% endapply %}
