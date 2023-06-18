@@ -2,8 +2,10 @@
 
 namespace ebitkov\BootstrapTwigComponents\Component;
 
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
+use Symfony\UX\TwigComponent\Attribute\PreMount;
 
 #[AsTwigComponent(name: 'bs:card', template: '@ebitkovBootstrapTwigComponents/components/card.html.twig')]
 class Card
@@ -11,43 +13,51 @@ class Card
     public ?string $header = null;
 
     /**
-     * @var array{ src ?: ?string, alt ?: ?string, title ?: ?string }
+     * @var array{ src ?: ?string, alt ?: ?string, title ?: ?string, position ?: "top" | "bottom" | "overlay" }
      */
-    public array $topImage = [];
+    public array $image = [];
 
-    public ?string $topImageSrc = null;
-    public ?string $topImageAlt = null;
-    public ?string $topImageTitle = null;
+    public ?string $imageSrc = null;
+    public ?string $imageAlt = null;
+    public ?string $imageTitle = null;
+
+    /** @var "top"|"bottom"|"overlay" */
+    public string $imagePosition = 'top';
+
 
     /**
-     * @var array{ src ?: ?string, alt ?: ?string, title ?: ?string }
+     * @param array<string, string> $data
+     * @return array<string, string>
      */
-    public array $bottomImage = [];
+    #[PreMount]
+    public function validate(array $data): array
+    {
+        $resolver = new OptionsResolver();
+        $resolver->setDefined(array_keys($data));
 
-    public ?string $bottomImageSrc = null;
-    public ?string $bottomImageAlt = null;
-    public ?string $bottomImageTitle = null;
+        $resolver->setDefaults([
+            'imagePosition' => 'top'
+        ]);
 
-    public bool $cardOverlay = false;
+        $resolver->setAllowedValues('imagePosition', ['top', 'bottom', 'overlay']);
 
+        return [
+            ... $data,
+            ... $resolver->resolve($data)
+        ];
+    }
 
     #[PostMount]
     public function configureImages(): void
     {
         // top image
-        if (!empty($this->topImageSrc)) {
-            $this->topImage = [
-                'src' => $this->topImageSrc,
-                'alt' => $this->topImageAlt,
-                'title' => $this->topImageTitle
-            ];
-        }
-        // bottom image
-        if (!empty($this->bottomImageSrc)) {
-            $this->bottomImage = [
-                'src' => $this->bottomImageSrc,
-                'alt' => $this->bottomImageAlt,
-                'title' => $this->bottomImageTitle
+        if (!empty($this->imageSrc)) {
+            $this->image = [
+                'src' => $this->imageSrc,
+                'class' => 'card-img' . ($this->imagePosition != 'overlay' ? '-' . $this->imagePosition : ''),
+                'alt' => $this->imageAlt,
+                'title' => $this->imageTitle,
+                'position' => $this->imagePosition,
             ];
         }
     }

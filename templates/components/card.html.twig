@@ -1,11 +1,8 @@
 {% apply spaceless %}
     <div{{ attributes }}>
         {% block img_top %}
-            {% if topImage is not empty %}
-                <twig:bs:card:image
-                    src="{{ topImage.src }}"
-                    alt="{{ topImage.alt }}"
-                    title="{{ topImage.title }}"/>
+            {% if image is not empty and image.position == 'top' %}
+                {{ component('bs:image', image | filter((v, k) => k != 'position')) }}
             {% endif %}
         {% endblock %}
         {% block body %}

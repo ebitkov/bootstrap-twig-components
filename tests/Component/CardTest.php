@@ -50,9 +50,9 @@ class CardTest extends TwigTestCase
         // single value attributes
         $template = $twig->createTemplate(
             '<twig:bs:card
-                topImageSrc="some/image.ext"
-                topImageAlt="alt text"
-                topImageTitle="title text">
+                imageSrc="some/image.ext"
+                imageAlt="alt text"
+                imageTitle="title text">
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card\'s content.</p>
             </twig:bs:card>');
 
