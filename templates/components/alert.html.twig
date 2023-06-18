@@ -1,5 +1,5 @@
-{% apply spaceless %}
+{% apply spaceless -%}
     <div{{ attributes }}>
         {%- block content %}{{ message }}{% endblock -%}
     </div>
-{% endapply %}
+{%- endapply %}

@@ -1,0 +1,4 @@
+{% set types = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'] -%}
+{% for type in types -%}
+    <twig:bs:alert type="{{ type }}" message="A simple {{ type }} alert—check it out!"/>
+{% endfor %}

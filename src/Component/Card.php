@@ -57,10 +57,11 @@ class Card
             $this->image = [
                 'src' => $this->imageSrc,
                 'class' => 'card-img' . ($this->imagePosition != 'overlay' ? '-' . $this->imagePosition : ''),
-                'alt' => $this->imageAlt,
-                'title' => $this->imageTitle,
-                'position' => $this->imagePosition,
+                'position' => $this->imagePosition
             ];
+
+            if ($this->imageAlt) $this->image['alt'] = $this->imageAlt;
+            if ($this->imageTitle) $this->image['title'] = $this->imageTitle;
         }
     }
 
