@@ -1,0 +1,4 @@
+{% set progress = [0, 25, 50, 75, 100] %}
+{% for p in progress %}
+<twig:bs:progress progress="{{ p }}" description="Basic example"/>
+{% endfor %}
