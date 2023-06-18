@@ -12,6 +12,8 @@ class Card
 {
     public ?string $header = null;
 
+    public ?string $footer = null;
+
     /**
      * @var array{ src ?: ?string, alt ?: ?string, title ?: ?string, position ?: "top" | "bottom" | "overlay" }
      */

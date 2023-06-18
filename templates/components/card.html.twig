@@ -1,5 +1,10 @@
 {% apply spaceless %}
     <div{{ attributes }}>
+        {% block header %}
+            {% if header is not empty %}
+                <div class="card-header">{{ header }}</div>
+            {% endif %}
+        {% endblock %}
         {% block img_top %}
             {% if image is not empty and image.position in ['top', 'overlay'] %}
                 {{ component('bs:image', image | filter((v, k) => k != 'position')) }}
@@ -13,6 +18,11 @@
         {% block img_bottom %}
             {% if image is not empty and image.position == 'bottom' %}
                 {{ component('bs:image', image | filter((v, k) => k != 'position')) }}
+            {% endif %}
+        {% endblock %}
+        {% block footer %}
+            {% if footer is not empty %}
+                <div class="card-footer">{{ footer }}</div>
             {% endif %}
         {% endblock %}
     </div>

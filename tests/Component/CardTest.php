@@ -116,4 +116,28 @@ class CardTest extends TwigTestCase
 
         $this->assertSame($expected, $template->render());
     }
+
+    public function testHeaderAndFooter(): void
+    {
+        $twig = $this->getTwig();
+
+        // single value attributes
+        $template = $twig->createTemplate(
+            '<twig:bs:card
+                header="Featured"
+                footer="2 days ago">
+                <p class="card-text">hello world</p>
+            </twig:bs:card>');
+
+        $expected =
+            '<div class="card">' .
+                '<div class="card-header">Featured</div>' .
+                '<div class="card-body">' .
+                    '<p class="card-text">hello world</p>' .
+                '</div>' .
+                '<div class="card-footer">2 days ago</div>' .
+            '</div>';
+
+        $this->assertSame($expected, $template->render());
+    }
 }
