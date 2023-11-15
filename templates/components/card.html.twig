@@ -1,29 +1,34 @@
 {% apply spaceless %}
-    <div{{ attributes }}>
-        {% block header %}
-            {% if header is not empty %}
-                <div class="card-header">{{ header }}</div>
-            {% endif %}
-        {% endblock %}
-        {% block img_top %}
-            {% if image is not empty and image.position in ['top', 'overlay'] %}
-                {{ component('bs:image', image | filter((v, k) => k != 'position')) }}
-            {% endif %}
-        {% endblock %}
-        {% block body %}
-            <div class="{{ image.position | default('top') == 'overlay' ? 'card-img-overlay' : 'card-body' }}">
-                {%- block content %}{% endblock -%}
-            </div>
-        {% endblock %}
-        {% block img_bottom %}
-            {% if image is not empty and image.position == 'bottom' %}
-                {{ component('bs:image', image | filter((v, k) => k != 'position')) }}
-            {% endif %}
-        {% endblock %}
-        {% block footer %}
-            {% if footer is not empty %}
-                <div class="card-footer">{{ footer }}</div>
-            {% endif %}
+    <div{{ attributes.defaults({class: 'card'}) }}>
+        {% block content %}
+            {% block header %}
+                {% if header is not empty %}
+                    <twig:bs:card:header>{{ header }}</twig:bs:card:header>
+                {% endif %}
+            {% endblock %}
+            {% block img_top %}
+                {% if image is not empty and image.position in ['top', 'overlay'] %}
+                    {{ component('bs:img', image | filter((v, k) => k != 'position')) }}
+                {% endif %}
+            {% endblock %}
+            {% block body %}
+                {% if body is empty %}{% set body %}{% block body_content %}{% endblock %}{% endset %}{% endif %}
+                {% if image.position | default('top') == 'overlay' %}
+                    <div class="card-img-overlay">{{ body }}</div>
+                {% else %}
+                    <twig:bs:card:body>{{ body }}</twig:bs:card:body>
+                {% endif %}
+            {% endblock %}
+            {% block img_bottom %}
+                {% if image is not empty and image.position == 'bottom' %}
+                    {{ component('bs:img', image | filter((v, k) => k != 'position')) }}
+                {% endif %}
+            {% endblock %}
+            {% block footer %}
+                {% if footer is not empty %}
+                    <twig:bs:card:footer>{{ footer }}</twig:bs:card:footer>
+                {% endif %}
+            {% endblock %}
         {% endblock %}
     </div>
 {% endapply %}

@@ -1,7 +1,10 @@
-<twig:bs:card style="width: 18rem;"
-    imageSrc="..."
-    imageAlt="...">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+<twig:bs:card
+    style="width: 18rem;"
+    imageSrc="--image-src"
+    imageAlt="--image-alt">
+    <twig:block name="body_content">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </twig:block>
 </twig:bs:card>

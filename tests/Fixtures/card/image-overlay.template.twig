@@ -1,5 +1,7 @@
-<twig:bs:card class="text-bg-dark" imagePosition="overlay" imageSrc="..." imageAlt="...">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small>Last updated 3 mins ago</small></p>
+<twig:bs:card class="text-bg-dark" imagePosition="overlay" imageSrc="--image-src" imageAlt="--image-alt">
+    <twig:block name="body_content">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small>Last updated 3 mins ago</small></p>
+    </twig:block>
 </twig:bs:card>

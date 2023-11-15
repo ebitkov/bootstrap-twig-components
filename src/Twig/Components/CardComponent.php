@@ -8,10 +8,10 @@ use Symfony\UX\TwigComponent\Attribute\PostMount;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 
 #[AsTwigComponent(name: 'bs:card', template: '@ebitkovBootstrapTwigComponents/components/card.html.twig')]
-class Card
+final class CardComponent
 {
     public ?string $header = null;
-
+    public ?string $body = null;
     public ?string $footer = null;
 
     /**
@@ -35,11 +35,26 @@ class Card
     public function validate(array $data): array
     {
         $resolver = new OptionsResolver();
-        $resolver->setDefined(array_keys($data));
+        $resolver->setIgnoreUndefined();
 
         $resolver->setDefaults([
-            'imagePosition' => 'top'
+            'header' => null,
+            'body' => null,
+            'footer' => null,
+            'image' => [],
+            'imagePosition' => 'top',
+            'imageSrc' => null,
+            'imageAlt' => null,
+            'imageTitle' => null,
         ]);
+
+        $resolver->setAllowedTypes('header', ['null', 'string']);
+        $resolver->setAllowedTypes('body', ['null', 'string']);
+        $resolver->setAllowedTypes('footer', ['null', 'string']);
+        $resolver->setAllowedTypes('image', ['null', 'array']);
+        $resolver->setAllowedTypes('imageSrc', ['null', 'string']);
+        $resolver->setAllowedTypes('imageAlt', ['null', 'string']);
+        $resolver->setAllowedTypes('imageTitle', ['null', 'string']);
 
         $resolver->setAllowedValues('imagePosition', ['top', 'bottom', 'overlay']);
 
@@ -63,20 +78,5 @@ class Card
             if ($this->imageAlt) $this->image['alt'] = $this->imageAlt;
             if ($this->imageTitle) $this->image['title'] = $this->imageTitle;
         }
-    }
-
-    /**
-     * @param array<string, string> $data
-     * @return array<string, string>
-     */
-    #[PostMount]
-    public function configureAttributes(array $data): array
-    {
-        $data = [
-            ...$data,
-            'class' => 'card' . (!empty($data['class']) ? ' ' . $data['class'] : '')
-        ];
-        ksort($data);
-        return $data;
     }
 }
