@@ -10,7 +10,7 @@ On more details how to use Bootstrap or UX Twig Components please visit the corr
 Components
 ----------
 
-[Alert](component/alert.md)
-[Badge](component/badge.md)
-[Card](component/card.md)
-[Progress](component/progress.md)
+[Alert](component/alert.md)  
+[Badge](component/badge.md)  
+[Card](component/card.md)  
+[Progress](component/progress.md)  
