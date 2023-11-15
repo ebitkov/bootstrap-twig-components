@@ -8,7 +8,7 @@ Fore more details on how to use UX components please visit the `Symfony document
 Basic Usage
 -----------
 
-.. code-block:: twig
+.. highlight:: twig
     <twig:bs:alert message="Hello World"/>
 
 .. _Symfony documentation: https://symfony.com/bundles/ux-twig-component/current/index.html
