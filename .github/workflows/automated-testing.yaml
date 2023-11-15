@@ -6,25 +6,9 @@ jobs:
     test-bundle:
         runs-on: ubuntu-latest
         steps:
-            -   uses: shivammathur/setup-php@v2
+            -   uses: ebitkov/build-symfony-bundle@main
                 with:
-                    php-version: '8.1'
-
-            -   name: Create blank Symfony project
-                run: composer create-project symfony/skeleton:6.3.* ./
-                
-            -   name: Install dependencies required for further configuration
-                run: composer require twig
-                
-            -   name: Install bundle
-                uses: actions/checkout@v3
-                with:
-                    path: bundle
+                    run-tests: false
+                    composer-additional-dependencies: twig test
             -   run: php bundle/.github/configure.php
-            -   run: |
-                    composer require \
-                        ebitkov/bootstrap-twig-components:@dev \
-                        test
-                
-            -   name: Run Tests
-                run: php bin/phpunit bundle/tests
+            -   run: symfony php bin/phpunit bundle/tests/
