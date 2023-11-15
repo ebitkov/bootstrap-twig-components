@@ -1,6 +1,6 @@
 <?php
 
-namespace ebitkov\BootstrapTwigComponents\Component;
+namespace ebitkov\BootstrapTwigComponents\Twig\Components;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
