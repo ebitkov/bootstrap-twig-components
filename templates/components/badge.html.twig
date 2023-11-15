@@ -2,8 +2,8 @@
     <span{{ attributes }}>
         {%- block content -%}
             {%- if label %}{{ label }}{% endif -%}
-            {%- if visuallyHidden -%}
-                <span class="visually-hidden">{{ visuallyHidden }}</span>
+            {%- if visuallyHiddenLabel -%}
+                <span class="visually-hidden">{{ visuallyHiddenLabel }}</span>
             {%- endif -%}
         {%- endblock -%}
     </span>

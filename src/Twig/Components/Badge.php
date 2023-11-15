@@ -12,11 +12,9 @@ class Badge
 {
     public ?string $label = null;
 
-    public ?string $visuallyHidden = null;
+    public ?string $visuallyHiddenLabel = null;
 
-    /**
-     * @var "inline" | "top-end"
-     */
+    /**  @var "inline" | "top-end" */
     public string $position = 'inline';
 
 
@@ -50,10 +48,9 @@ class Badge
     #[PostMount]
     public function configureAttributes(array $data): array
     {
-        if ($this->label) {
-            $class = 'badge';
-        } else {
-            $class = 'p-2 rounded-circle'; // spacing to display generic indicator
+        $class = 'badge';
+        if (!$this->label) {
+            $class .= 'p-2 rounded-circle'; // spacing to display generic indicator
         }
 
         // predefined styling
