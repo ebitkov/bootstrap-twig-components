@@ -8,7 +8,7 @@ use Symfony\UX\TwigComponent\Attribute\PostMount;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 
 #[AsTwigComponent(name: 'bs:badge', template: '@ebitkovBootstrapTwigComponents/components/badge.html.twig')]
-class Badge
+final class BadgeComponent
 {
     public ?string $label = null;
 

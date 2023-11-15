@@ -7,7 +7,7 @@ use Symfony\UX\TwigComponent\Attribute\ExposeInTemplate;
 use Symfony\UX\TwigComponent\Attribute\PostMount;
 
 #[AsTwigComponent(name: 'bs:progress', template: '@ebitkovBootstrapTwigComponents/components/progress.html.twig')]
-class Progress
+final class ProgressComponent
 {
     public int $progress = 0;
 
