@@ -48,9 +48,10 @@ class Badge
     #[PostMount]
     public function configureAttributes(array $data): array
     {
-        $class = 'badge';
-        if (!$this->label) {
-            $class .= 'p-2 rounded-circle'; // spacing to display generic indicator
+        if ($this->label) {
+            $class = 'badge';
+        } else {
+            $class = 'p-2 rounded-circle'; // spacing to display generic indicator
         }
 
         // predefined styling
