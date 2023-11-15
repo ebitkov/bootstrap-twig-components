@@ -9,13 +9,10 @@ On more details how to use Bootstrap or UX Twig Components please visit the corr
 Components
 ----------
 
-`Alert <component/alert.rst>`_
-
-`Badge <component/badge.rst>`_
-
-`Card <component/card.rst>`_
-
-`Progress <component/progress.rst>`_
+| `Alert <component/alert.rst>`_
+| `Badge <component/badge.rst>`_
+| `Card <component/card.rst>`_
+| `Progress <component/progress.rst>`_
 
 
 .. _Bootstrap: https://getbootstrap.com
