@@ -10,10 +10,10 @@ Table of Contents
 -----------------
 
 1. Components
-   - Alert
-   - Badge
-   - Card
-   - Progress
+    - Alert
+    - Badge
+    - Card
+    - Progress
 
 .. _Bootstrap: https://getbootstrap.com
 .. _Twig Components: https://symfony.com/bundles/ux-twig-component/current/index.html
