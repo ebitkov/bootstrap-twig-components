@@ -1,5 +1,5 @@
 {% apply spaceless -%}
-    <div{{ attributes }}>
+    <div{{ attributes.defaults({class: 'alert alert-' ~ type, role: 'alert'}) }}>
         {%- block content %}{{ message }}{% endblock -%}
     </div>
 {%- endapply %}
