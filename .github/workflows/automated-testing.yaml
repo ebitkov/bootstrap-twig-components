@@ -8,9 +8,13 @@ jobs:
         
         steps:
             -   uses: actions/checkout@v4
-            -   uses: php-actions/composer@v6
-            -   uses: php-actions/phpunit@v3
+                
+            -   uses: setup-php/setup-php@v2
                 with:
-                    version: 9.6
-                    php_version: 8.2
-                    configuration: phpunit.xml.dist
+                    php-version: 8.2
+                    tools: composer
+                    coverage: xdebug
+                    
+            -   run: |
+                    composer install --no-interaction --no-progress
+                    vendor/bin/phpunit
