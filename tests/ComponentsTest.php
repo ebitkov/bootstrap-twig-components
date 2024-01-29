@@ -10,12 +10,12 @@ use Twig\Environment;
 class ComponentsTest extends KernelTestCase
 {
 
-    public function getFixtures(): array
+    public static function getFixtures(): array
     {
         $fixtures = [];
 
         // get all fixtures
-        $fixtureDir = __DIR__ . '/Fixtures/';
+        $fixtureDir = dirname(__DIR__) . '/fixtures/';
 
         $finder = new Finder();
         $finder->files()
@@ -36,7 +36,7 @@ class ComponentsTest extends KernelTestCase
             }
 
             $fixtures[$path . '/' . $testName] = [
-                $path . '/'. $file->getFilename(),
+                $path . '/' . $file->getFilename(),
                 $expected
             ];
         }
@@ -52,7 +52,7 @@ class ComponentsTest extends KernelTestCase
     {
         $this->assertSame(
             $expectedHtml,
-            $this->getTwig()->render(sprintf('@bundle_test/%s', $template))
+            $this->getTwig()->render(sprintf('@fixture/%s', $template))
         );
     }
 

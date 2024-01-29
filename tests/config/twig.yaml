@@ -1,0 +1,4 @@
+twig:
+    auto_reload: true
+    paths:
+        fixtures: fixture
